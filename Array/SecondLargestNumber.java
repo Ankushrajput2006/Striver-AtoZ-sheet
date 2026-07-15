@@ -1,0 +1,26 @@
+package Array;
+
+public class SecondLargestNumber {
+    public static void main(String[] args) {
+        int[] nums = {3, 30, 34, 5, 9};
+        int secondLargestNumber = secondLargestNumber(nums);
+        System.out.println(secondLargestNumber);
+    }
+
+    public static int secondLargestNumber(int[] nums) {
+        int largest = nums[0];
+        int secondLargest = Integer.MIN_VALUE;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > largest) {
+                secondLargest = largest;
+                largest = nums[i];
+            } else if (nums[i] > secondLargest && nums[i] != largest) {
+                secondLargest = nums[i];
+            }
+        }
+
+        return secondLargest;
+    }
+}
+// The time complexity of this algorithm is O(n), where n is the number of elements in the array. This is because we are iterating through the array once to find the second largest number. The space complexity is O(1) since we are using a constant amount of space to store the largest and second largest numbers found so far.
