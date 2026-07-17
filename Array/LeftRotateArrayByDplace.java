@@ -2,9 +2,9 @@
 
 public class LeftRotateArrayByDplace {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4, 5};
-        int d = 2; // Number of places to rotate
-        leftRotateByD(arr, d);
+        int[] arr = {1,2,3,4,5,6,7};
+        int d = 3; // Number of places to rotate
+        leftRotateByDUsingTempArray(arr, d);
         for (int num : arr) {
             System.out.print(num + " ");
         }
