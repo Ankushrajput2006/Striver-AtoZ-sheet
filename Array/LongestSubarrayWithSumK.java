@@ -14,9 +14,11 @@ public class LongestSubarrayWithSumK {
 
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
+            if (sum == k) {
+                 maxLength = Math.max(maxLength, i + 1);
+            }
             if (prefixSum.containsKey(sum - k)) {
-                int length = i - prefixSum.get(sum - k);
-                maxLength = Math.max(maxLength, length);
+                maxLength = Math.max(maxLength, i - prefixSum.get(sum - k));
             }
             prefixSum.putIfAbsent(sum, i);
         }
