@@ -1,3 +1,4 @@
+im
 public class LongestSubarrayWithSumK {
     public static void main(String[] args) {
         int[] arr = {1,2,3,1,1,1,1,4,2,3};
@@ -41,6 +42,9 @@ public class LongestSubarrayWithSumK {
                 maxLength = Math.max(maxLength, right - left + 1);
             }
             right++;
+            if(right<arr.length){
+                sum = sum + arr[right];
+            }
         }
         return maxLength;
      }
