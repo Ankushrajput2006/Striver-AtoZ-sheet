@@ -17,7 +17,7 @@ public class MajorityElement {
         }
         return -1; // No majority element found
     }
-    // This method uses the Boyer-Moore Voting Algorithm to find the majority element in linear time and constant space.
+    // This method uses the Boyer-Moore Voting Algorithm to find the majority element in linear time and constant space. 
     public static int findMajorityElement1(int[] nums) {
         int count = 0;
         Integer candidate = null;
