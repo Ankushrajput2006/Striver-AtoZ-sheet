@@ -1,8 +1,8 @@
 import java.util.HashMap;
 public class MajorityElement {
     public static void main(String[] args) {
-        int[] nums = {2,2,3,3,1,2,2};
-        int majorityElement = findMajorityElement(nums);
+        int[] nums = {2,2,1};
+        int majorityElement = findMajorityElement1(nums);
         System.out.println("Majority Element: " + majorityElement);
     }
 
@@ -26,7 +26,11 @@ public class MajorityElement {
             if (count == 0) {
                 candidate = num;
             }
-            count += (num == candidate) ? 1 : -1;
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
         }
 
         // Verify that the candidate is indeed the majority element
