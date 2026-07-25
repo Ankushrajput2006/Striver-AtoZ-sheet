@@ -52,3 +52,5 @@ public class FirstAndLastOccurance {
         return answer; // Return the last occurrence index or -1 if not found
     }
 }
+
+
