@@ -11,9 +11,8 @@ class Node {
         this.next = next;
     }
 }
-
-public class LengthOfLoopInLL {
-     public static void main(String[] args) {
+public class FindStartingNodeofTheLoopInLL {
+ public static void main(String[] args) {
         Node head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
@@ -23,40 +22,32 @@ public class LengthOfLoopInLL {
         // Creating a loop for testing
         head.next.next.next.next.next = head.next; // Loop at node with value 2
 
-        int loopLength = findLoopLength(head);
-        if (loopLength > 0) {
-            System.out.println("Length of the loop in the linked list is: " + loopLength);
+        Node startingNode = findStartingNodeOfLoop(head);
+        if (startingNode != null) {
+            System.out.println("Starting node of the loop is: " + startingNode.data);
         } else {
             System.out.println("No loop detected in the linked list.");
         }
-}
-   public static int findLoopLength(Node head) {
-    if (head == null) {
-        return 0; // No loop if the list is empty
     }
+    public static Node findStartingNodeOfLoop(Node head) {
         Node slowPointer = head;
         Node fastPointer = head;
 
+        // Detect loop using Floyd's Cycle Detection Algorithm
         while (fastPointer != null && fastPointer.next != null) {
             slowPointer = slowPointer.next; // Move slow pointer by 1
             fastPointer = fastPointer.next.next; // Move fast pointer by 2
 
             if (slowPointer == fastPointer) {
-                // Loop detected, now calculate the length of the loop
-                return calculateLoopLength(slowPointer);
+                // Loop detected, now find the starting node of the loop
+                slowPointer = head; // Move slow pointer to the head
+                while (slowPointer != fastPointer) {
+                    slowPointer = slowPointer.next; // Move both pointers by 1
+                    fastPointer = fastPointer.next;
+                }
+                return slowPointer; // Starting node of the loop
             }
         }
-        return 0; // No loop detected
-    }
-
-    private static int calculateLoopLength(Node meetingPoint) {
-        Node current = meetingPoint;
-        int length = 1;
-
-        while (current.next != meetingPoint) {
-            current = current.next;
-            length++;
-        }
-        return length;
-    }
+        return null; // No loop detected
+    }   
 }
