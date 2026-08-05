@@ -3,7 +3,6 @@ import java.util.*;
 public class PascalTriangle {
     public static void main(String[] args) {
         int numRows = 5;
-        int numCols = 4;
         System.out.println("Pascal's Triangle with " + numRows + " rows:");
         ArrayList<ArrayList<Integer>> triangle = printPascalTriangle(numRows);
         System.out.println(triangle);
@@ -24,7 +23,7 @@ public class PascalTriangle {
         int ans = 1;
         for (int i = 0; i < numRows; i++) {
             ans = ans * (numRows - i) / (i + 1);
-            row.add(ans);
+            row.add((int) ans);
         }
         return row;
     }

@@ -17,23 +17,11 @@ public class FindAllSubArrayWithSumK {
         for (int i = 0; i < n; i++) {
             sum += arr[i];
             if (prefixSumMap.containsKey(sum - k)) {
-                int start = prefixSumMap.get(sum - k) + 1;
-                printSubarray(arr, start, i);
-                count++;
+                count += prefixSumMap.get(sum - k);
             }
-            prefixSumMap.put(sum, i);
+            prefixSumMap.put(sum, prefixSumMap.getOrDefault(sum, 0) + 1);
         }
          return count;
     }
 
-    public static void printSubarray(int[] arr, int start, int end) {
-        System.out.print("[");
-        for (int i = start; i <= end; i++) {
-            System.out.print(arr[i]);
-            if (i < end) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-    }
 }

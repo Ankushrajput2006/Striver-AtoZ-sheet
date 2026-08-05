@@ -26,16 +26,25 @@ public class RotateMatrixBy90Degree {
                 reverse(matrix, i);
             }
         }
-
-        public static void reverse(int[][] matrix, int row) {
-            int left = 0;
-            int right = matrix.length - 1;
-            while (left < right) {
-                int temp = matrix[row][left];
-                matrix[row][left] = matrix[row][right];
-                matrix[row][right] = temp;
-                left++;
-                right--;
-            }
+}
+public static void reverse(int[][] matrix, int row) {
+        int left = 0;
+        int right = matrix.length - 1;
+        while (left < right) {
+            int temp = matrix[row][left];
+            matrix[row][left] = matrix[row][right];
+            matrix[row][right] = temp;
+            left++;
+            right--;
         }
+    }
+
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int val : row) {
+                System.out.print(val + " ");
+            }
+            System.out.println();
+        }
+    }
 }
